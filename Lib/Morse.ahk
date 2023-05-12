@@ -1,5 +1,5 @@
-#Include Hot.ahk
-#Include Input.ahk
+#Include <Utils\Hot>
+#Include <Abstractions\Input>
 
 class Morse {
 
@@ -41,13 +41,6 @@ class Morse {
 				? (Pattern .= "1", Hold++, Pattern_Tip .= "▬")
 				: (Pattern .= "0", Press++, Pattern_Tip .= "●")
 			
-
-			; (Tips) && (
-			; 	key = A_ThisHotkey
-			; 		? ToolTip(A_ThisHotkey " : " Hold Press " " Pattern_Tip)
-			; 		: ToolTip(A_ThisHotkey " ―> " Key " : " Hold Press " " Pattern_Tip)
-			; )
-
 			(Tips) && ToolTip(tipsTxt Hold Press " " Pattern_Tip)
 			
 			if KeyWait(key, "D T" p_TimeOut)
@@ -142,6 +135,31 @@ class Morse {
 
 			if !KeyWait(Key, "D T0.3")
 				return (ToolTip(), args[press])
+		}
+	}
+
+	static PressFunc(Funcs*) {
+	
+		key := Hot.Raw(A_ThisHotkey), press := 0
+		tipsTxt := (key = A_ThisHotkey) ? A_ThisHotkey : (A_ThisHotkey " ―> " Key)
+		
+		while KeyWait(Key) {
+
+			(press = Funcs.Length) && press := 1
+
+			(A_PriorHotkey = "" Or A_TimeSincePriorHotkey > 300) && press++
+
+			ToolTip(tipsTxt " : " press)
+
+			if !KeyWait(Key, "D T0.3") {
+				
+				ToolTip()
+
+				if !HasMethod(Funcs[press])
+					throw TypeError("PreesFunc: func must be a function", -1, Funcs[press])
+
+				return Funcs[press].Call()
+			}
 		}
 	}
 
