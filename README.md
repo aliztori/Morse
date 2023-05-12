@@ -40,7 +40,7 @@ Then the scripts waits for the key to be pressed down again. If it is not presse
         ToolTip("Short+Long press")
     
     else 
-        ToolTip(Press pattern" . Pattern)
+        ToolTip("Press pattern" . Pattern)
 }
 ```
 
