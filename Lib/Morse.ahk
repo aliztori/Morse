@@ -1,6 +1,5 @@
-#Include <Utils\Hot>
-#Include <Abstractions\Input>
-
+#Include Hot.ahk
+#Include Input.ahk
 
 class Morse {
 
