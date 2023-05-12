@@ -8,6 +8,12 @@ With different hotkey press patterns many more actions can be triggered than jus
 
 
 
+<!-- # Normal Usage
+## Setup
+1. Download a zip from the releases page
+2. Extract the zip to a folder of your choice
+3. Run the Example script -->
+
 ## Usage
 
 Include the library
