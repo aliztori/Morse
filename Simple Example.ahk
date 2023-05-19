@@ -1,5 +1,5 @@
 ; If the library files are in a subfolder called Lib next to the script, use this
-#include Morse.ahk
+#include <Morse>
 ; If you placed all the library files in your lib folder, use this
 ;#include <Morse>
 ; https://www.autohotkey.com/docs/v2/Scripts.htm#lib
