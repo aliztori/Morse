@@ -56,7 +56,7 @@ Then the scripts waits for the key to be pressed down again. If it is not presse
 
 It works exactly like the previous function, except that it returns the number of presses and there is no long hold, and this method returns the number of times you pressed the key with the specified interval (Default: 300)
 
-```
+```Autohotkey
 ^g:: {
     press := Morse.Press("g")
     ToolTip("you pressed 'g' " press " Times")
