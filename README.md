@@ -62,3 +62,10 @@ It works exactly like the previous function, except that it returns the number o
     ToolTip("you pressed 'g' " press " Times")
 }
 ```
+
+```Autohotkey
+f2:: {
+    press := Morse.Press("f2", 500, 5)
+    ToolTip("you pressed 'g' " press " Times") ;press will be less than 5 due the cycle limit
+}
+```
